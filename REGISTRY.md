@@ -1,6 +1,6 @@
 # Server Registry
 
-All 48 servers managed by [mcp-provisioner](https://github.com/rdmilly/mcp-provisioner). Source in this repo = custom-built code. Everything else runs a third-party package via provisioner manifest.
+All 48 servers managed by [mcp-provisioner](https://github.com/rdmilly/mcp-provisioner). Source in this repo = custom-built code. Third-party servers run standard packages via provisioner manifest.
 
 **Total: 48 servers, ~740 tools**
 
@@ -8,14 +8,14 @@ Authoritative manifest: `/opt/projects/mcp-provisioner/config/manifest.json` on 
 
 ## HOT (always running) — 17 servers
 
-| Server | Tools | Source in this repo |
+| Server | Tools | Source |
 |---|---|---|
 | `helix` | 33 | [rdmilly/helix](https://github.com/rdmilly/helix) |
 | `docker` | 18 | third-party `mcp-server-docker` |
 | `filesystem` | 14 | third-party `server-filesystem` |
 | `github` | 26 | third-party `mcp-server-github` |
 | `slack` | 8 | third-party `server-slack` |
-| `gateway` | 9 | [gateway/](gateway/) — archived (replaced by Lifeline) |
+| `gateway` | 9 | ✅ [gateway/](gateway/) — archived (replaced by Lifeline) |
 | `knowledgebase` | 4 | ✅ [knowledgebase/](knowledgebase/) |
 | `workingdocs` | 5 | ✅ [workingdocs/](workingdocs/) |
 | `minio` | 26 | third-party MinIO AIStor MCP |
@@ -24,13 +24,13 @@ Authoritative manifest: `/opt/projects/mcp-provisioner/config/manifest.json` on 
 | `cloudflare-dns` | 29 | ✅ [cloudflare-dns/](cloudflare-dns/) |
 | `transfer` | 5 | ✅ [transfer/](transfer/) |
 | `staging` | 4 | ✅ [staging/](staging/) |
-| `printblocks` | 19 | ⚠️ source in `/opt/projects/printblocks` on VPS2 — large project, push separately |
+| `printblocks` | 19 | ✅ [printblocks/](printblocks/) |
 | `board` | 9 | ✅ [board/](board/) |
 | `miro` | 12 | ✅ [miro/](miro/) |
 
 ## WARM (on-demand) — 31 servers
 
-| Server | Tools | Source in this repo |
+| Server | Tools | Source |
 |---|---|---|
 | `bravesearch` | 2 | third-party `server-brave-search` |
 | `browserless` | 5 | ✅ [browserless/](browserless/) |
@@ -42,30 +42,28 @@ Authoritative manifest: `/opt/projects/mcp-provisioner/config/manifest.json` on 
 | `fetch` | 1 | third-party `mcp-server-fetch` |
 | `filetransfer` | 6 | ✅ [filetransfer/](filetransfer/) |
 | `git` | 12 | third-party `mcp-server-git` |
-| `githubprojects` | 29 | ⚠️ source not yet extracted |
-| `googleworkspace` | 85 | ⚠️ source not yet extracted |
+| `githubprojects` | 29 | ✅ [github-projects/](github-projects/) (TypeScript — full source at `/opt/projects/mw-mcp-servers/mcp-github-projects/` on VPS2) |
+| `googleworkspace` | 85 | ⚠️ full source at `/opt/repos/mcp-google-workspace/` on VPS2 — large multi-file repo, needs separate push |
 | `grafana` | 44 | third-party `grafana/mcp-grafana` |
 | `instantly` | 38 | third-party `instantly-mcp` |
 | `linkedin` | 16 | ✅ [linkedin/](linkedin/) |
-| `loki` | 6 | ⚠️ source not yet extracted |
-| `mail` | 5 | ⚠️ source not yet extracted |
-| `n8n` | 29 | ⚠️ source not yet extracted |
+| `loki` | 6 | ✅ [loki/](loki/) (reconstructed from manifest — image not cached locally) |
+| `mail` | 5 | ✅ [mail/](mail/) |
+| `n8n` | 29 | ✅ [n8n/](n8n/) |
 | `notion` | 22 | third-party + ✅ [notion-proxy/](notion-proxy/) (description sanitizer) |
 | `postgresql` | 1 | third-party `server-postgres` |
 | `prometheus` | 6 | third-party `prometheus-mcp-server` |
 | `puppeteer` | 7 | third-party `mcp-server-puppeteer` |
-| `qdrant` | 2 | ⚠️ source not yet extracted |
+| `qdrant` | 2 | ✅ [qdrant/](qdrant/) (reconstructed from manifest) |
 | `recraft` | 9 | third-party `@recraft-ai/mcp-recraft-server` |
 | `sequentialthinking` | 1 | third-party `server-sequential-thinking` |
 | `sqlite` | 6 | third-party `mcp-server-sqlite` |
-| `telegram` | 7 | ⚠️ source not yet extracted |
-| `telegram-bot` | 6 | ⚠️ source not yet extracted |
+| `telegram` | 7 | ✅ [telegram/](telegram/) |
+| `telegram-bot` | 6 | ✅ [telegram-bot/](telegram-bot/) |
 | `time` | 2 | third-party `mcp-server-time` |
 | `uptime-kuma` | 7 | third-party `mcp-uptime-kuma` |
 | `youtube` | 6 | third-party `mcp-youtube` |
 
-## Remaining to extract
+## One remaining
 
-These are custom-built servers whose source wasn't found via filesystem search — likely inside Docker image layers or built elsewhere. Need `docker exec <container> cat /app/server.py` to retrieve:
-
-`printblocks` (19 tools — large, at `/opt/projects/printblocks` on VPS2), `githubprojects`, `googleworkspace`, `loki`, `mail`, `n8n`, `qdrant`, `telegram`, `telegram-bot`
+`googleworkspace` (85 tools) — full multi-file Python repo at `/opt/repos/mcp-google-workspace/` on VPS2. Has `main.py`, `auth/`, `core/`, `gdrive/`, `gmail/`, `gcalendar/`, `gsheets/`, `gdocs/`, `gslides/`, `gtasks/`, `gchat/`, `gforms/`, `gsearch/`. Push separately via git in a VPS2 session.
