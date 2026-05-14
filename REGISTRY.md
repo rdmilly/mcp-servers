@@ -2,7 +2,7 @@
 
 All 48 servers managed by [mcp-provisioner](https://github.com/rdmilly/mcp-provisioner). Source in this repo = custom-built code. Third-party servers run standard packages via provisioner manifest.
 
-**Total: 48 servers, ~740 tools**
+**Total: 48 servers, ~740 tools. All 48 ✅ committed.**
 
 Authoritative manifest: `/opt/projects/mcp-provisioner/config/manifest.json` on VPS2.
 
@@ -43,14 +43,14 @@ Authoritative manifest: `/opt/projects/mcp-provisioner/config/manifest.json` on 
 | `filetransfer` | 6 | ✅ [filetransfer/](filetransfer/) |
 | `git` | 12 | third-party `mcp-server-git` |
 | `githubprojects` | 29 | ✅ [github-projects/](github-projects/) (TypeScript — full source at `/opt/projects/mw-mcp-servers/mcp-github-projects/` on VPS2) |
-| `googleworkspace` | 85 | ⚠️ full source at `/opt/repos/mcp-google-workspace/` on VPS2 — large multi-file repo, needs separate push |
+| `googleworkspace` | 85 | ✅ [rdmilly/google-workspace-mcp](https://github.com/rdmilly/google-workspace-mcp) (separate repo — fork of `taylorwilsdon/google_workspace_mcp`, MIT) |
 | `grafana` | 44 | third-party `grafana/mcp-grafana` |
 | `instantly` | 38 | third-party `instantly-mcp` |
 | `linkedin` | 16 | ✅ [linkedin/](linkedin/) |
-| `loki` | 6 | ✅ [loki/](loki/) (reconstructed from manifest — image not cached locally) |
+| `loki` | 6 | ✅ [loki/](loki/) (reconstructed from manifest) |
 | `mail` | 5 | ✅ [mail/](mail/) |
 | `n8n` | 29 | ✅ [n8n/](n8n/) |
-| `notion` | 22 | third-party + ✅ [notion-proxy/](notion-proxy/) (description sanitizer) |
+| `notion` | 22 | third-party + ✅ [notion-proxy/](notion-proxy/) |
 | `postgresql` | 1 | third-party `server-postgres` |
 | `prometheus` | 6 | third-party `prometheus-mcp-server` |
 | `puppeteer` | 7 | third-party `mcp-server-puppeteer` |
@@ -63,7 +63,3 @@ Authoritative manifest: `/opt/projects/mcp-provisioner/config/manifest.json` on 
 | `time` | 2 | third-party `mcp-server-time` |
 | `uptime-kuma` | 7 | third-party `mcp-uptime-kuma` |
 | `youtube` | 6 | third-party `mcp-youtube` |
-
-## One remaining
-
-`googleworkspace` (85 tools) — full multi-file Python repo at `/opt/repos/mcp-google-workspace/` on VPS2. Has `main.py`, `auth/`, `core/`, `gdrive/`, `gmail/`, `gcalendar/`, `gsheets/`, `gdocs/`, `gslides/`, `gtasks/`, `gchat/`, `gforms/`, `gsearch/`. Push separately via git in a VPS2 session.
