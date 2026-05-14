@@ -1,0 +1,37 @@
+[build-system]
+requires = [ "setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "workspace-mcp"
+version = "1.6.2"
+description = "Comprehensive Google Workspace Streamable HTTP & SSE MCP Server for Calendar, Gmail, Docs, Sheets, Slides & Drive"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+ "fastapi>=0.115.12",
+ "fastmcp==2.13.0",
+ "google-api-python-client>=2.168.0",
+ "google-auth-httplib2>=0.2.0",
+ "google-auth-oauthlib>=1.2.2",
+ "httpx>=0.28.1",
+ "pyjwt>=2.10.1",
+ "python-dotenv>=1.1.0",
+ "pyyaml>=6.0.2",
+ "websockets>=14.0",
+]
+
+[project.scripts]
+workspace-mcp = "main:main"
+
+[tool.setuptools]
+py-modules = [ "fastmcp_server", "main"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+exclude = ["tests*", "docs*", "build", "dist"]
+
+[tool.setuptools.package-data]
+core = ["tool_tiers.yaml"]
+
+# Upstream: https://github.com/taylorwilsdon/google_workspace_mcp (MIT)
