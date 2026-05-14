@@ -1,0 +1,1 @@
+*.log\n.env\n__pycache__/\nvenv/\nnode_modules/
